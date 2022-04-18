@@ -4,7 +4,7 @@ const request = indexedDB.open('pizza_hunt', 1);
 
 request.onupgradeneeded = function(event) {
     const db = event.target.result;
-    db.createObjectStore('new_pizza', { autoIncrement: true});
+    db.createObjectStore('new_pizza', { autoIncrement: true });
 };
 
 request.onsuccess = function(event) {
@@ -35,7 +35,7 @@ function uploadPizza() {
     const getAll = pizzaObjectStore.getAll();
 
     getAll.onsuccess = function() {
-        if (getAll.result.lenght > 0) {
+        if (getAll.result.length > 0) {
             fetch('api/pizzas', {
                 method: 'POST',
                 body: JSON.stringify(getAll.result),
